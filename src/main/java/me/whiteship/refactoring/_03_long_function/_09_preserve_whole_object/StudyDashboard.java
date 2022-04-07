@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -70,30 +69,20 @@ public class StudyDashboard {
         latch.await();
         service.shutdown();
 
-        try (FileWriter fileWriter = new FileWriter("participants.md");
+        try (final FileWriter fileWriter = new FileWriter("participants.md");
              PrintWriter writer = new PrintWriter(fileWriter)) {
             participants.sort(Comparator.comparing(Participant::username));
-
             writer.print(header(participants.size()));
-
-            participants.forEach(p -> {
-                String markdownForHomework = getMarkdownForParticipant(p.username(), p.homework());
-                writer.print(markdownForHomework);
-            });
+            participants
+                    .stream().map(this::getMarkdownForParticipant)
+                    .forEach(writer::print);
         }
     }
 
-    double getRate(Map<Integer, Boolean> homework) {
-        long count = homework.values().stream()
-                .filter(v -> v == true)
-                .count();
-        return (double) (count * 100 / this.totalNumberOfEvents);
-    }
-
-    private String getMarkdownForParticipant(String username, Map<Integer, Boolean> homework) {
-        return String.format("| %s %s | %.2f%% |\n", username,
-                checkMark(homework, this.totalNumberOfEvents),
-                getRate(homework));
+    private String getMarkdownForParticipant(final Participant participant) {
+        return String.format("| %s %s | %.2f%% |\n", participant.username(),
+                checkMark(participant, this.totalNumberOfEvents),
+                participant.getRate(this.totalNumberOfEvents));
     }
 
     /**
@@ -117,10 +106,10 @@ public class StudyDashboard {
     /**
      * |:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|
      */
-    private String checkMark(Map<Integer, Boolean> homework, int totalEvents) {
+    private String checkMark(final Participant participant, int totalEvents) {
         StringBuilder line = new StringBuilder();
         for (int i = 1; i <= totalEvents; i++) {
-            if (homework.containsKey(i) && homework.get(i)) {
+            if (participant.homework().containsKey(i) && participant.homework().get(i)) {
                 line.append("|:white_check_mark:");
             } else {
                 line.append("|:x:");

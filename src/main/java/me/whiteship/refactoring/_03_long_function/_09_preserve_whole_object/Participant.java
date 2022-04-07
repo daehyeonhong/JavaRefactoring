@@ -12,5 +12,10 @@ public record Participant(String username, Map<Integer, Boolean> homework) {
         this.homework.put(index, true);
     }
 
-
+    double getRate(final int totalNumberOfEvents) {
+        long count = homework().values().stream()
+                .filter(v -> v)
+                .count();
+        return (double) (count * 100 / totalNumberOfEvents);
+    }
 }
