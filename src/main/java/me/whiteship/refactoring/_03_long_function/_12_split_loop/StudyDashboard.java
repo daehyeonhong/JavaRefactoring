@@ -26,51 +26,56 @@ public class StudyDashboard {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        StudyDashboard studyDashboard = new StudyDashboard(15);
-        studyDashboard.print();
+        new StudyDashboard(15).print();
     }
 
     private void print() throws IOException, InterruptedException {
-        GHRepository ghRepository = getGhRepository();
+        this.checkGithubIssues(getGhRepository());
+        new StudyPrinter(this.totalNumberOfEvents, this.participants).execute();
+        this.printFirstParticipants();
+    }
 
+    private void checkGithubIssues(final GHRepository ghRepository) throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(8);
         CountDownLatch latch = new CountDownLatch(totalNumberOfEvents);
 
         for (int index = 1; index <= totalNumberOfEvents; index++) {
             int eventId = index;
-            service.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        GHIssue issue = ghRepository.getIssue(eventId);
-                        List<GHIssueComment> comments = issue.getComments();
-                        Date firstCreatedAt = null;
-                        Participant first = null;
-
-                        for (GHIssueComment comment : comments) {
-                            Participant participant = findParticipant(comment.getUserName(), participants);
-                            participant.setHomeworkDone(eventId);
-
-                            if (firstCreatedAt == null || comment.getCreatedAt().before(firstCreatedAt)) {
-                                firstCreatedAt = comment.getCreatedAt();
-                                first = participant;
-                            }
-                        }
-
-                        firstParticipantsForEachEvent[eventId - 1] = first;
-                        latch.countDown();
-                    } catch (IOException e) {
-                        throw new IllegalArgumentException(e);
-                    }
+            service.execute(() -> {
+                try {
+                    GHIssue issue = ghRepository.getIssue(eventId);
+                    List<GHIssueComment> comments = issue.getComments();
+                    checkHomework(comments, eventId);
+                    firstParticipantsForEachEvent[eventId - 1] = findFirst(comments);
+                    latch.countDown();
+                } catch (IOException e) {
+                    throw new IllegalArgumentException(e);
                 }
             });
         }
 
         latch.await();
         service.shutdown();
+    }
 
-        new StudyPrinter(this.totalNumberOfEvents, this.participants).execute();
-        printFirstParticipants();
+    private Participant findFirst(final List<GHIssueComment> comments) throws IOException {
+        Date firstCreatedAt = null;
+        Participant first = null;
+        for (GHIssueComment comment : comments) {
+            Participant participant = findParticipant(comment.getUserName(), participants);
+            if (firstCreatedAt == null || comment.getCreatedAt().before(firstCreatedAt)) {
+                firstCreatedAt = comment.getCreatedAt();
+                first = participant;
+            }
+        }
+        return first;
+    }
+
+    private void checkHomework(final List<GHIssueComment> comments, final int eventId) {
+        for (GHIssueComment comment : comments) {
+            Participant participant = findParticipant(comment.getUserName(), participants);
+            participant.setHomeworkDone(eventId);
+        }
     }
 
     private void printFirstParticipants() {
@@ -79,8 +84,7 @@ public class StudyDashboard {
 
     private GHRepository getGhRepository() throws IOException {
         GitHub gitHub = GitHub.connect();
-        GHRepository repository = gitHub.getRepository("whiteship/live-study");
-        return repository;
+        return gitHub.getRepository("whiteship/live-study");
     }
 
     private Participant findParticipant(String username, List<Participant> participants) {
