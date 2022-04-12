@@ -10,7 +10,7 @@ public record Participant(String username, Map<Integer, Boolean> homework) {
 
     public double getRate(double total) {
         long count = this.homework.values().stream()
-                .filter(v -> v == true)
+                .filter(v -> v)
                 .count();
         return count * 100 / total;
     }
