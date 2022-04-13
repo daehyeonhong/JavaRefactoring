@@ -8,12 +8,12 @@ class ShipmentTest {
 
     @Test
     void deliveryDate() {
-        LocalDate placedOn = LocalDate.of(2021, 12, 15);
-        Order orderFromWA = new Order(placedOn, "WA");
+        final LocalDate placedOn = LocalDate.of(2021, 12, 15);
+        final Order orderFromWA = new Order(placedOn, "WA");
 
-        Shipment shipment = new Shipment();
-        assertEquals(placedOn.plusDays(1), shipment.deliveryDate(orderFromWA, true));
-        assertEquals(placedOn.plusDays(2), shipment.deliveryDate(orderFromWA, false));
+        final Shipment shipment = new Shipment();
+        assertEquals(placedOn.plusDays(1), shipment.rushDeliveryDate(orderFromWA));
+        assertEquals(placedOn.plusDays(2), shipment.regularDeliveryDate(orderFromWA));
     }
 
 }
