@@ -2,9 +2,9 @@ package me.whiteship.refactoring._04_long_parameter_list._14_replace_parameter_w
 
 public class Order {
 
-    private int quantity;
+    private final int quantity;
 
-    private double itemPrice;
+    private final double itemPrice;
 
     public Order(int quantity, double itemPrice) {
         this.quantity = quantity;
@@ -13,11 +13,14 @@ public class Order {
 
     public double finalPrice() {
         double basePrice = this.quantity * this.itemPrice;
-        int discountLevel = this.quantity > 100 ? 2 : 1;
-        return this.discountedPrice(basePrice, discountLevel);
+        return this.discountedPrice(basePrice);
     }
 
-    private double discountedPrice(double basePrice, int discountLevel) {
-        return discountLevel == 2 ? basePrice * 0.90 : basePrice * 0.95;
+    private int disCountLevel() {
+        return this.quantity > 100 ? 2 : 1;
+    }
+
+    private double discountedPrice(double basePrice) {
+        return this.disCountLevel() == 2 ? basePrice * 0.90 : basePrice * 0.95;
     }
 }
