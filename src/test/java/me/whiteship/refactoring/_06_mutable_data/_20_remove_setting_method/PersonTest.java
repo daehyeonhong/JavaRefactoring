@@ -7,12 +7,11 @@ class PersonTest {
 
     @Test
     void person() {
-        Person person = new Person();
-        person.setId(10);
-        person.setName("keesun");
+        Person person = new Person(10);
+        person.changeName("keesun");
         assertEquals(10, person.getId());
         assertEquals("keesun", person.getName());
-        person.setName("whiteship");
+        person.changeName("whiteship");
         assertEquals("whiteship", person.getName());
     }
 
