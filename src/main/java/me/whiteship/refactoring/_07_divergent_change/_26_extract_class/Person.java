@@ -2,14 +2,12 @@ package me.whiteship.refactoring._07_divergent_change._26_extract_class;
 
 public class Person {
 
+    private final TelephoneNumber telephoneNumber;
     private String name;
 
-    private String officeAreaCode;
-
-    private String officeNumber;
-
-    public String telephoneNumber() {
-        return this.officeAreaCode + " " + this.officeNumber;
+    public Person(final TelephoneNumber telephoneNumber, final String name) {
+        this.telephoneNumber = telephoneNumber;
+        this.name = name;
     }
 
     public String name() {
@@ -20,19 +18,11 @@ public class Person {
         this.name = name;
     }
 
-    public String officeAreaCode() {
-        return officeAreaCode;
+    public String telephoneNumber() {
+        return this.telephoneNumber.toString();
     }
 
-    public void setOfficeAreaCode(String officeAreaCode) {
-        this.officeAreaCode = officeAreaCode;
-    }
-
-    public String officeNumber() {
-        return officeNumber;
-    }
-
-    public void setOfficeNumber(String officeNumber) {
-        this.officeNumber = officeNumber;
+    public TelephoneNumber getTelephoneNumber() {
+        return telephoneNumber;
     }
 }
