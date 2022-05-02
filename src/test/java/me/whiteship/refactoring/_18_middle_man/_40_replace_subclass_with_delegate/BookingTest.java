@@ -3,9 +3,6 @@ package me.whiteship.refactoring._18_middle_man._40_replace_subclass_with_delega
 import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BookingTest {
 

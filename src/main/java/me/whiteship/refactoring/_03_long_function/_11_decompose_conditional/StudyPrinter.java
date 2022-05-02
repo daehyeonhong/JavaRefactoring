@@ -1,5 +1,6 @@
 package me.whiteship.refactoring._03_long_function._11_decompose_conditional;
 
+import me.whiteship.refactoring._03_long_function._01_before.Participant;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;

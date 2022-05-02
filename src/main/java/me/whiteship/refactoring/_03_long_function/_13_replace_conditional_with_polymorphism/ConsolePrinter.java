@@ -1,5 +1,6 @@
 package me.whiteship.refactoring._03_long_function._13_replace_conditional_with_polymorphism;
 
+import me.whiteship.refactoring._03_long_function._01_before.Participant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;

@@ -5,8 +5,8 @@ import java.util.List;
 
 public class ProductionPlan {
 
-    private double production;
     private final List<Double> adjustments = new ArrayList<>();
+    private double production;
 
     public void applyAdjustment(double adjustment) {
         this.adjustments.add(adjustment);

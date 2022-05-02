@@ -1,5 +1,6 @@
 package me.whiteship.refactoring._06_mutable_data._19_separate_query_from_modifier;
 
+import me.whiteship.refactoring._06_mutable_data._20_remove_setting_method.Person;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;

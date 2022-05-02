@@ -2,9 +2,8 @@ package me.whiteship.refactoring._06_mutable_data._21_replace_derived_variable_w
 
 public class Discount {
 
-    private double discount;
-
     private final double baseTotal;
+    private double discount;
 
     public Discount(double baseTotal) {
         this.baseTotal = baseTotal;

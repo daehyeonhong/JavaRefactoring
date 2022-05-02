@@ -29,7 +29,8 @@ public class StudyDashboard {
         final GHIssue issue = repository.getIssue(30);
 
         final List<GHIssueComment> reviews = issue.getComments();
-        for (final GHIssueComment review : reviews) studyReviews.add(new StudyReview(review.getUserName(), review.getBody()));
+        for (final GHIssueComment review : reviews)
+            studyReviews.add(new StudyReview(review.getUserName(), review.getBody()));
     }
 
     private Set<StudyReview> getStudyReviews() {

@@ -1,5 +1,6 @@
 package me.whiteship.refactoring._04_long_parameter_list._16_combine_functinos_into_class;
 
+import me.whiteship.refactoring._03_long_function._01_before.Participant;
 import org.kohsuke.github.GHIssue;
 import org.kohsuke.github.GHIssueComment;
 import org.kohsuke.github.GHRepository;
@@ -67,7 +68,6 @@ public class StudyDashboard {
         service.shutdown();
         new StudyPrinter(this.totalNumberOfEvents, participants).print();
     }
-
 
 
 }

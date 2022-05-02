@@ -2,11 +2,10 @@ package me.whiteship.refactoring._06_mutable_data._20_remove_setting_method;
 
 public class Person {
 
+    private final String id;
     private String name;
 
-    private final int id;
-
-    public Person(final int id) {
+    public Person(final String id) {
         this.id = id;
     }
 
@@ -18,7 +17,7 @@ public class Person {
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

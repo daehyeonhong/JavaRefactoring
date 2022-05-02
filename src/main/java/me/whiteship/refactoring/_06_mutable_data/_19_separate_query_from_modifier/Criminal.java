@@ -1,5 +1,6 @@
 package me.whiteship.refactoring._06_mutable_data._19_separate_query_from_modifier;
 
+import me.whiteship.refactoring._06_mutable_data._20_remove_setting_method.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;

@@ -2,7 +2,6 @@ package me.whiteship.refactoring._06_mutable_data._19_separate_query_from_modifi
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BillingTest {
 

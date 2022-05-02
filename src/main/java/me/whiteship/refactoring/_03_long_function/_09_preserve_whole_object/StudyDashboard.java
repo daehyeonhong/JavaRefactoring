@@ -1,5 +1,6 @@
 package me.whiteship.refactoring._03_long_function._09_preserve_whole_object;
 
+import me.whiteship.refactoring._03_long_function._01_before.Participant;
 import org.kohsuke.github.GHIssue;
 import org.kohsuke.github.GHIssueComment;
 import org.kohsuke.github.GHRepository;

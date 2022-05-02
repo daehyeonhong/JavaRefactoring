@@ -5,10 +5,9 @@ import org.slf4j.LoggerFactory;
 
 public class Rectangle {
 
+    private final Logger log = LoggerFactory.getLogger(Rectangle.class);
     private double perimeter;
     private double area;
-
-    private final Logger log = LoggerFactory.getLogger(Rectangle.class);
 
     public void updateGeometry(double height, double width) {
         final double calculationPerimeter = 2 * (height + width);

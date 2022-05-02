@@ -5,8 +5,18 @@ import java.time.LocalDate;
 public class CustomerContract {
 
     private LocalDate startDate;
+    private double discountRate;
 
-    public CustomerContract(LocalDate startDate) {
+    public CustomerContract(final LocalDate startDate, final double discountRate) {
         this.startDate = startDate;
+        this.discountRate = discountRate;
+    }
+
+    public double getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(final double discountRate) {
+        this.discountRate = discountRate;
     }
 }

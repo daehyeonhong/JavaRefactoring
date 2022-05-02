@@ -1,7 +1,6 @@
 package me.whiteship.refactoring._12_repeated_swtiches;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SwitchImprovementsTest {
 
