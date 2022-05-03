@@ -2,6 +2,8 @@ package me.whiteship.refactoring._19_insider_trading;
 
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CheckInTest {
 

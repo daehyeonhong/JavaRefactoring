@@ -1,6 +1,7 @@
 package me.whiteship.refactoring._07_divergent_change._25_move_function;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AccountTest {
 

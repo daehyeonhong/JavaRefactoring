@@ -7,7 +7,7 @@ class PersonTest {
 
     @Test
     void person() {
-        Person person = new Person(10);
+        Person person = new Person("10");
         person.changeName("keesun");
         assertEquals(10, person.getId());
         assertEquals("keesun", person.getName());

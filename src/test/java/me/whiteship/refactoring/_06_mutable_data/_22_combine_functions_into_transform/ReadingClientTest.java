@@ -3,6 +3,7 @@ package me.whiteship.refactoring._06_mutable_data._22_combine_functions_into_tra
 import org.junit.jupiter.api.Test;
 import java.time.Month;
 import java.time.Year;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReadingClientTest {
 

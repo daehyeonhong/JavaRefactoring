@@ -1,7 +1,7 @@
 package me.whiteship.refactoring._17_message_chain._37_hide_delegate;
 
-import me.whiteship.refactoring._06_mutable_data._20_remove_setting_method.Person;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PersonTest {
 

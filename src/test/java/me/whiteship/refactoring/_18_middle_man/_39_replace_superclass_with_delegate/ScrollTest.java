@@ -2,6 +2,7 @@ package me.whiteship.refactoring._18_middle_man._39_replace_superclass_with_dele
 
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ScrollTest {
 

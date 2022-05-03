@@ -1,6 +1,5 @@
 package me.whiteship.refactoring._11_primitive_obsession._30_repliace_primitive_with_object;
 
-import org.springframework.core.annotation.Order;
 import java.util.List;
 
 public class OrderProcessor {
