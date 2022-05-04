@@ -7,9 +7,7 @@ public class Bill {
     private GasUsage gasUsage;
 
     public double calculateBill() {
-        double electricityBill = getElectricityBill();
-        double gasBill = getGasBill();
-        return electricityBill + gasBill;
+        return this.electricityUsage.getElectricityBill() + this.gasUsage.getGasBill();
     }
 
 }
