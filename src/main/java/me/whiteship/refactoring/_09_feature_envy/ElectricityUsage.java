@@ -11,6 +11,10 @@ public class ElectricityUsage {
         this.pricePerUnit = pricePerUnit;
     }
 
+    public double getElectricityBill() {
+        return this.getAmount() * this.getPricePerUnit();
+    }
+
     public double getAmount() {
         return amount;
     }
