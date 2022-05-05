@@ -8,7 +8,7 @@ class VoyageRatingTest {
 
     @Test
     void westIndies() {
-        VoyageRating voyageRating = new VoyageRating(new Voyage("west-inides", 10),
+        VoyageRating voyageRating = VoyageRatingFactory.createVoyageRating(new Voyage("west-inides", 10),
                 List.of(new VoyageHistory("east-indies", 5),
                         new VoyageHistory("west-indies", 15),
                         new VoyageHistory("china", -2),
@@ -18,7 +18,7 @@ class VoyageRatingTest {
 
     @Test
     void china() {
-        VoyageRating voyageRating = new VoyageRating(new Voyage("china", 10),
+        VoyageRating voyageRating = VoyageRatingFactory.createVoyageRating(new Voyage("china", 10),
                 List.of(new VoyageHistory("east-indies", 5),
                         new VoyageHistory("west-indies", 15),
                         new VoyageHistory("china", -2),
