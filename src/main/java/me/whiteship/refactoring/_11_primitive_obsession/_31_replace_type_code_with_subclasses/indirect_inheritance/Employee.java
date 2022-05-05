@@ -2,9 +2,9 @@ package me.whiteship.refactoring._11_primitive_obsession._31_replace_type_code_w
 
 public class Employee {
 
-    private String name;
+    private final String name;
 
-    private EmployeeType type;
+    private final EmployeeType type;
 
     public Employee(String name, String typeValue) {
         this.name = name;
@@ -26,9 +26,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", type='" + type.toString() + '\'' +
-                '}';
+        return "Employee{" + "name='" + name + '\'' + ", type='" + type.toString() + '\'' + '}';
     }
 }
