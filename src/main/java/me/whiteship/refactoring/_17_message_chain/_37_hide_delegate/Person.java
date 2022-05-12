@@ -2,7 +2,7 @@ package me.whiteship.refactoring._17_message_chain._37_hide_delegate;
 
 public class Person {
 
-    private String name;
+    private final String name;
 
     private Department department;
 
@@ -14,11 +14,15 @@ public class Person {
         return name;
     }
 
-    public Department getDepartment() {
+    private Department getDepartment() {
         return department;
     }
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    Person getManager() {
+        return this.getDepartment().getManager();
     }
 }
