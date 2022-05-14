@@ -4,13 +4,13 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class Scroll extends CategoryItem {
-
-    private LocalDate dateLastCleaned;
+public class Scroll {
+    private final LocalDate dateLastCleaned;
+    private final CategoryItem categoryItem;
 
     public Scroll(Integer id, String title, List<String> tags, LocalDate dateLastCleaned) {
-        super(id, title, tags);
         this.dateLastCleaned = dateLastCleaned;
+        this.categoryItem = new CategoryItem(id, title, tags);
     }
 
     public long daysSinceLastCleaning(LocalDate targetDate) {
