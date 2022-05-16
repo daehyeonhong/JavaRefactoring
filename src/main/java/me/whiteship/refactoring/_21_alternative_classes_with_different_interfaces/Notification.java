@@ -2,7 +2,7 @@ package me.whiteship.refactoring._21_alternative_classes_with_different_interfac
 
 public class Notification {
 
-    private String title;
+    private final String title;
     private String receiver;
     private String sender;
 
